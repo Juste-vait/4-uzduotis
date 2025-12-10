@@ -9,7 +9,7 @@ contract Ticketing {
     uint256 public totalTickets;
     uint256 public soldTickets;
 
-        enum TicketStatus {
+    enum TicketStatus {
         None,
         Active,
         Used
@@ -20,6 +20,16 @@ contract Ticketing {
     event TicketPurchased(address indexed buyer);
     event TicketValidated(address indexed buyer);
     event Payout(address indexed to, uint256 amount);
+
+    modifier onlyOrganizer() {
+        require(msg.sender == organizer, "Not organizer");
+        _;
+    }
+
+    modifier onlyValidator() {
+        require(msg.sender == validator, "Not validator");
+        _;
+    }
 
      constructor(
         uint256 _ticketPrice,
@@ -41,5 +51,9 @@ contract Ticketing {
         soldTickets += 1;
 
         emit TicketPurchased(msg.sender);
+    }
+
+    function checkTicket(address _buyer) external view onlyValidator returns (TicketStatus) {
+        return tickets[_buyer];
     }
 }
