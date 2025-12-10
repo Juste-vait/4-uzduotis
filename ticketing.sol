@@ -64,4 +64,14 @@ contract Ticketing {
 
         emit TicketValidated(_buyer);
     }
+
+    function withdraw() external onlyOrganizer {
+        uint256 amount = address(this).balance;
+        require(amount > 0, "Nothing to withdraw");
+
+        (bool ok, ) = organizer.call{value: amount}("");
+        require(ok, "Transfer failed");
+
+        emit Payout(organizer, amount);
+    }
 }
