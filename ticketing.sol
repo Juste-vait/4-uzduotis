@@ -8,4 +8,12 @@ contract Ticketing {
     uint256 public ticketPrice;
     uint256 public totalTickets;
     uint256 public soldTickets;
+
+        enum TicketStatus {
+        None,
+        Active,
+        Used
+    }
+
+    mapping(address => TicketStatus) public tickets;
 }
