@@ -17,6 +17,10 @@ contract Ticketing {
 
     mapping(address => TicketStatus) public tickets;
 
+    event TicketPurchased(address indexed buyer);
+    event TicketValidated(address indexed buyer);
+    event Payout(address indexed to, uint256 amount);
+
      constructor(
         uint256 _ticketPrice,
         uint256 _totalTickets,
