@@ -31,4 +31,15 @@ contract Ticketing {
         ticketPrice = _ticketPrice;
         totalTickets = _totalTickets;
     }
+
+    function buyTicket() external payable {
+        require(soldTickets < totalTickets, "Sold out");
+        require(msg.value == ticketPrice, "Incorrect price");
+        require(tickets[msg.sender] == TicketStatus.None, "Already has ticket");
+
+        tickets[msg.sender] = TicketStatus.Active;
+        soldTickets += 1;
+
+        emit TicketPurchased(msg.sender);
+    }
 }
