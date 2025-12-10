@@ -56,4 +56,12 @@ contract Ticketing {
     function checkTicket(address _buyer) external view onlyValidator returns (TicketStatus) {
         return tickets[_buyer];
     }
+
+    function validateTicket(address _buyer) external onlyValidator {
+        require(tickets[_buyer] == TicketStatus.Active, "Not active");
+
+        tickets[_buyer] = TicketStatus.Used;
+
+        emit TicketValidated(_buyer);
+    }
 }
