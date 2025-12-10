@@ -16,4 +16,15 @@ contract Ticketing {
     }
 
     mapping(address => TicketStatus) public tickets;
+
+     constructor(
+        uint256 _ticketPrice,
+        uint256 _totalTickets,
+        address _validator
+    ) {
+        organizer = msg.sender;
+        validator = _validator;
+        ticketPrice = _ticketPrice;
+        totalTickets = _totalTickets;
+    }
 }
