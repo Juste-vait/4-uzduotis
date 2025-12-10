@@ -30,7 +30,7 @@ Validatorius:
 - užtikrina, kad tas pats bilietas nebūtų panaudotas antrą kartą.
 Validatoriaus adresą nurodo organizatorius kontrakto kūrimo metu.
 
--------------------------------------
+------------------------------------
 
 ## Sekos diagrama
 ![Sekos diagrama](1.jpeg)
@@ -55,3 +55,4 @@ Pasibaigus renginiui organizatorius iškviečia funkciją withdraw() norėdamas 
  
 8. Payout
 Kontraktas patikrina, kad lėšas bando atsiimti būtent organizatorius (msg.sender == organizer). Jeigu taip, kontraktas perveda visą savo balansą į organizatoriaus Ethereum adresą.
+
