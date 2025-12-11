@@ -1,5 +1,61 @@
 # 4-uzduotis
 
+
+## Išmanioji sutartis „Ticketing“
+
+## 1. Apžvalga
+Šiame projekte sukūriau Ethereum išmaniąją sutartį **„Ticketing“**, kuri leidžia vartotojams pirkti ir validuoti bilietus decentralizuotoje aplinkoje. Galutinė sistemos versija buvo sukurta ir ištestuota naudojant **Remix VM (Shanghai)** — vidinę virtualią blokų grandinę.
+
+---
+
+## 2. Pradiniai bandymai (Truffle + Ganache + MetaMask)
+Pradžioje bandžiau naudoti:
+
+- Truffle
+- Ganache
+- MetaMask
+
+Tačiau realus deploy per Truffle nepavyko dėl gas skaičiavimo klaidų ir suderinamumo problemų su mano Node versija.  
+
+---
+
+## 3. Galutinis pasirinkimas — Remix VM (Shanghai)
+Tolimesnis darbas atliktas naudojant Remix IDE:
+
+Environment: Remix VM (Shanghai)
+
+**Žingsniai:**
+1. Įkėliau `Ticketing.sol` failą į Remix.  
+2. Su `Solidity Compiler` sukompiliavau kontraktą (0.8.20).  
+3. Pasirinkau **Remix VM (Shanghai)** kaip vykdymo aplinką.  
+4. Įvedžiau konstruktoriaus parametrus:
+   - `ticketPrice = 1 ether`
+   - `totalTickets = 100`
+   - `validator = vienas iš VM sugeneruotų adresų`
+5. Paspaudžiau **Deploy** — kontraktas sėkmingai įdiegtas.
+
+---
+
+## 4. Funkcionalumo testavimas
+
+### 4.1 Bilieto pirkimas (`buyTicket`)
+- Pasirinkau kitą VM paskyrą kaip **pirkėją**.  
+- Į lauką **Value** įrašiau `1 ether`.  
+- Iškviečiau funkciją `buyTicket()`.  
+- Rezultatai:
+  - `tickets(buyer) = 1 (Active)`  
+  - Remix konsolėje užregistruotas `TicketPurchased` įvykis
+
+### 4.2 Bilieto validavimas (`validateTicket`)
+- Persijungiau į paskyrą, nurodytą kaip **validator**.  
+- Iškviečiau `validateTicket(buyer)`.  
+- Rezultatai:
+  - `tickets(buyer) = 2 (Used)`  
+  - Konsolėje matomas `TicketValidated` įvykis
+
+---
+
+
 ## Verslo modelio ir logikos aprašymas
 1. Įvadas
 Pasirinktas verslo modelis realizuoja decentralizuotą bilietų pardavimo ir validavimo sistemą. Šios sistemos tikslas – užtikrinti skaidrų, patikimą ir nekintamą bilietų pardavimo procesą, pasitelkiant išmaniąją sutartį Ethereum tinkle. Sprendimas eliminuoja tarpininkus, padidina pasitikėjimą tarp dalyvių ir užtikrina, kad bilietų pirkimo bei patvirtinimo duomenys būtų vieši, tikslūs ir nekeičiami.
