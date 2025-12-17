@@ -53,6 +53,53 @@ Environment: Remix VM (Shanghai)
   - `tickets(buyer) = 2 (Used)`  
   - Konsolėje matomas `TicketValidated` įvykis
 
+
+
+## 5. Išmaniosios sutarties testavimas Ethereum testiniame tinkle (Sepolia)
+
+Naudojau:
+- **MetaMask**
+- **Remix (Injected Provider – MetaMask)**
+- **Sepolia testinius ETH**
+
+Buvo atlikti šie veiksmai:
+- Prijungtas MetaMask prie Sepolia tinklo
+- Gauti testiniai SepoliaETH per „faucet“
+- Remix aplinkoje pasirinktas „Injected Provider – MetaMask“
+- Išmanioji sutartis sėkmingai įdiegta (deploy) į Sepolia tinklą
+- Atlikti veiksmai per Remix ir MetaMask:
+  - Bilieto pirkimas (`buyTicket`) su ETH verte
+  - Bilieto validavimas naudojant validatoriaus adresą
+  - Lėšų išėmimas organizatoriui (`withdraw`)
+
+Visi veiksmai buvo patvirtinti per MetaMask ir įtraukti į Sepolia blokų grandinę.
+
+Kontractas deployed:<br>
+![deploy](2.jpeg)<br>
+
+Bilietas validuotas:<br>
+![validate ticket](3.jpeg)<br>
+
+Organizatorius pasiemė pinigus:<br>
+![withdraw](4.jpeg)<br>
+
+---
+
+## 6. Išmaniosios sutarties „logų“ peržiūra naudojant Etherscan
+
+Išmaniosios sutarties veikimas buvo patikrintas naudojant **Sepolia Etherscan**.
+
+
+Etherscan matomi šie įvykiai (event’ai):
+- `TicketPurchased` – bilieto pirkimas
+- `TicketValidated` – bilieto validavimas
+- `Payout` – lėšų išmokėjimas organizatoriui
+
+![etherscan transactions](5.jpeg)
+![etherscan events](6.jpeg)
+
+
+
 ---
 
 
