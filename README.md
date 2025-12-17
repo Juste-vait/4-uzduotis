@@ -68,11 +68,9 @@ Buvo atlikti šie veiksmai:
 - Remix aplinkoje pasirinktas „Injected Provider – MetaMask“
 - Išmanioji sutartis sėkmingai įdiegta (deploy) į Sepolia tinklą
 - Atlikti veiksmai per Remix ir MetaMask:
-  - Bilieto pirkimas (`buyTicket`) su ETH verte
+  - Bilieto pirkimas (`buyTicket`)
   - Bilieto validavimas naudojant validatoriaus adresą
   - Lėšų išėmimas organizatoriui (`withdraw`)
-
-Visi veiksmai buvo patvirtinti per MetaMask ir įtraukti į Sepolia blokų grandinę.
 
 Kontractas deployed:<br>
 ![deploy](2.jpeg)<br>
