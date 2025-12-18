@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ticketing DApp (Minimum)</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6.14.0/dist/ethers.umd.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>🎟️ Ticketing DApp</h1>
+    <p class="muted">Minimalus front-end bendravimui su išmaniąja sutartimi per MetaMask (Sepolia).</p>
+
+    <div class="card">
+      <h2>1) Prisijungimas</h2>
+      <button id="btnConnect">Connect MetaMask</button>
+      <div class="grid">
+        <div><span class="label">Account:</span> <span id="lblAccount">-</span></div>
+        <div><span class="label">Network:</span> <span id="lblNetwork">-</span></div>
+      </div>
+      <p class="hint">Jei nori veikti kaip Buyer / Validator / Organizer – perjunk account MetaMask’e ir atnaujink puslapį.</p>
+    </div>
+
+    <div class="card">
+      <h2>2) Sutarties nustatymai</h2>
+      <div class="grid">
+        <div>
+          <label>Sutarties adresas</label>
+          <input id="inpAddress" value="0x53a4B78f16c0208D9fE64925e1730237Ba3103B1" />
+        </div>
+        <div>
+          <label>Buyer adresas (tikrinimui / validavimui)</label>
+          <input id="inpBuyer" placeholder="0x..." />
+        </div>
+      </div>
+      <button id="btnLoad">Load contract</button>
+      <p class="hint">ABI įklijuosi į <code>app.js</code> (žr. komentarą).</p>
+    </div>
+
+    <div class="card">
+      <h2>3) Nuskaityti duomenis (Read)</h2>
+      <button id="btnRefresh">Refresh data</button>
+
+      <div class="grid">
+        <div><span class="label">organizer:</span> <span id="lblOrg">-</span></div>
+        <div><span class="label">validator:</span> <span id="lblVal">-</span></div>
+        <div><span class="label">ticketPrice:</span> <span id="lblPrice">-</span></div>
+        <div><span class="label">soldTickets:</span> <span id="lblSold">-</span></div>
+        <div><span class="label">totalTickets:</span> <span id="lblTotal">-</span></div>
+        <div><span class="label">tickets(buyer):</span> <span id="lblTicketStatus">-</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>4) Veiksmai (Write)</h2>
+
+      <div class="actions">
+        <div class="row">
+          <button id="btnBuy">buyTicket (sumoka ticketPrice)</button>
+          <span class="muted small">Veikia tik jei tavo account yra Buyer ir turi SepoliaETH.</span>
+        </div>
+
+        <div class="row">
+          <button id="btnValidate">validateTicket(buyer)</button>
+          <span class="muted small">Veikia tik jei tavo MetaMask account = validator.</span>
+        </div>
+
+        <div class="row">
+          <button id="btnWithdraw">withdraw()</button>
+          <span class="muted small">Veikia tik jei tavo MetaMask account = organizer.</span>
+        </div>
+      </div>
+
+      <div class="log">
+        <div class="label">Log:</div>
+        <pre id="outLog">-</pre>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
